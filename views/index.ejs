@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>too do list</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: blanchedalmond;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      color: rgb(50, 50, 48);
+      font-size: 60px;
+      margin: 0 20px;
+    }
+    .todolist {
+      width: 500px;
+      font-weight: 300px;
+      border: 1px solid rgb(255, 255, 255);
+      border-radius: 20px 20px 20px 20px;
+      padding: 10px 20px 20px 20px;
+      background-image: radial-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    }
+    .todolist li {
+      color: rgb(168, 137, 96);
+      font-size: 24px;
+      margin-left: 20px;
+      word-break: break-word;
+    }
+    li a {
+      float: right;
+      color: gray;
+      border: 0px solid transparent;
+      /* border: 1px solid white; */
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    li a:hover {
+      color: rgb(75, 48, 12);
+    }
+
+    .clear {
+      font-weight: 500;
+      border-radius: 5px;
+      border: 0px solid transparent;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid rgb(168, 137, 96);
+      background-color: rgb(168, 137, 96);
+      color: blanchedalmond;
+    }
+    #input {
+      min-width: 300px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 0px solid transparent;
+      font-size: 24px;
+      margin-right: 10px;
+      color: rgb(75, 48, 12);
+    }
+
+    #input:focus {
+      outline: none;
+    }
+
+    #add_btn,
+    .clear {
+      color: blanchedalmond;
+      font-weight: 500;
+      font-size: 24px;
+      border-radius: 5px;
+      border: 0px solid transparent;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid rgb(168, 137, 96);
+      background-color: rgb(168, 137, 96);
+      transition: 0.3s all ease-in-out;
+    }
+
+    #add_btn:hover,
+    .clear:hover {
+      background-color: rgb(122, 92, 52);
+      color: white;
+      transform: scale(0.97);
+    }
+
+    .d-none {
+      display: none;
+    }
+
+    li span:focus {
+      background-color: white;
+      color: black;
+      outline: none;
+      padding: 0 5px;
+      display: inline-block;
+      min-width: 300px;
+      max-width: 400px;
+    }
+  </style>
+  <body>
+    <div class="main">
+      <h1>TODO LIST</h1>
+      <form action="/insertData" method="post">
+        <input name="id" type="hidden" value="<%=Date.now()%>" />
+        <input
+          id="input"
+          name="task"
+          type="text"
+          placeholder="Enter ypur task here..."
+          required
+        />
+        <input id="add_btn" type="submit" value="Add Task" />
+      </form>
+      <ol class="todolist">
+        <% infor.map((val)=>{%>
+        <li>
+          <span>
+            <%=val.task%>
+            <a href="/deletData/<%=val.id%>">Delete</a>
+            <a href="/editData/<%=val.id%>">Edit</a>
+          </span>
+        </li>
+        <%})%>
+      </ol>
+      <form action="/clear_all_data" method="post">
+        <button type="submit" class="clear">Remove all</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+     @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: blanchedalmond;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    H1 {
+      color: rgb(50, 50, 48);
+      font-size: 60px;
+      margin: 0 20px;
+    }
+    
+    #input {
+      min-width: 300px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: 0px solid transparent;
+      font-size: 24px;
+      margin-right: 10px;
+      color: rgb(75, 48, 12);
+    }
+
+    #input:focus {
+      outline: none;
+    }
+
+    #add_btn {
+      color: blanchedalmond;
+      font-weight: 500;
+      font-size: 24px;
+      border-radius: 5px;
+      border: 0px solid transparent;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: 1px solid rgb(168, 137, 96);
+      background-color: rgb(168, 137, 96);
+      transition: 0.3s all ease-in-out;
+    }
+
+    #add_btn:hover {
+      background-color: rgb(122, 92, 52);
+      color: white;
+      transform: scale(0.97);
+    }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>TO DO LIST</h1>
+      <form action="/insertData" method="post">
+        <input name="editId" type="hidden" value="<%= data.id%>" />
+        <input id="input" name="task" type="text" value="<%= data.task%>" />
+        <input id="add_btn" type="submit" value="Update" />
+      </form>
+    </div>
+  </body>
+</html>
